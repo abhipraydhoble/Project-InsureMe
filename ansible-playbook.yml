@@ -1,0 +1,25 @@
+---
+- name: Configure Docker on EC2 Instances
+  hosts: all
+  become: true
+  tasks:
+    - name: updating apt
+      apt:
+        update_cache: yes
+      become: true
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+      become: true
+
+    - name: Start Docker Service
+      systemd:
+        name: docker
+        state: started
+      become: true
+
+    - name: Deploy Docker Container
+      command: docker run -d -p 8089:8081 kaju912/insurance:latest
+      become: true
