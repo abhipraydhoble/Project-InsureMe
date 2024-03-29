@@ -45,7 +45,7 @@ Access Jenkins in a web browser using the public IP of your EC2 instance.
 publicIp:8080
 
 
-### Install Necessary Plugins in Jenkins:
+### Install Necessary Plugins in Jenkins🔌
 
 #### Goto Manage Jenkins →Plugins → Available Plugins →
 
