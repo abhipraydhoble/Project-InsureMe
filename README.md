@@ -197,6 +197,6 @@ Build Pipeline:
 ![BUILD PIPELINE](https://github.com/kajol2699/Project-InsureMe/assets/130952932/c3638768-a2e3-47c8-a691-35e92980d01d)
 
 
-Final Output:
+Final Output: node ip:container port
 
 ![OUTPUT](https://github.com/kajol2699/Project-InsureMe/assets/130952932/237d1bd2-97df-4451-a69c-11e6c3ef6d12)
