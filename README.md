@@ -1,34 +1,86 @@
-# Project-InsureMe
+ #  $\color{red}{Project-InsureMe}$
+ 
 
+InsureMe was having trouble managing their software because it was all one big piece. </br>
+As they grew bigger, it became even harder to manage. <br>
 
-## Tech Stack 🧑‍💻
+### $\color{orange}{Requirements}$
+
+#### 1. Automated Deployment:</br>
+Whenever a developer makes changes to the code and pushes them to the master branch of the Git repository, </br>
+Jenkins should automatically start a deployment process.
+</br>
+#### 2. CI/CD Pipeline: </br>
+Jenkins should: </br>
+
+* Check out the latest code from the master branch.
+* Compile and test the code to ensure it works correctly
+* Package the application into a container using Docker.
+* Deploy the containerized application to a preconfigured test server on AWS
+
+With DevOps Approch I used several devops tools such as  <br>
+
+- Git: Managed code changes with version control. </br>
+- Jenkins: Automated integration, testing, and deployment processes. </br>
+- Docker: Containerized applications for consistency and scalability. </br>
+- Ansible: Automated server configuration and infrastructure management. </br>
+- AWS: Provided infrastructure for hosting and deploying the application. </br>
+ Together, these tools streamlined development, testing, and deployment, ensuring efficient management of the InsureMe project. </br>
+
+### $\color{orange}{Project Summary}$
+
+- Create two EC2 instances on Amazon Web Services (AWS): one called Master and the other called Node.
+- These servers will host application and manage its deployment.
+- Install Jenkins on the Master server to automate the process of building, testing, and deploying application.
+- Set up Jenkins to watch your code repository on GitHub.
+- Whenever someone makes changes to the code and pushes them to GitHub, Jenkins automatically kicks off a process to update and deploy application.
+- Used Docker to package application and its dependencies into a container, making it easy to deploy and run anywhere.
+- After that write a pipeline in Jenkins to build, test, and deploy your application automatically.
+- This pipeline runs every time someone makes changes to the code, ensuring that the latest version of your application is always available.
+- Whenever someone pushes changes to the code, Jenkins pulls the latest code, builds the application, creates a Docker image, and pushes it to DockerHub (a service for storing Docker images).
+- Then, it deploys the updated application to your servers on AWS using Ansible, a tool for automating server configuration.
+- With this setup, you  can fully automated process for building, testing, and deploying your application.
+- Whenever someone make changes to the code, Jenkins takes care of the rest, ensuring that your application is always up-to-date and running smoothly on your servers.</p>
+
+# $\color{red}{Steps}$
+## $\color{green}{Tech Stack}$
 ✓ AWS - For creating ec2 machines as servers and deploy the web application. </br>
 ✓ Git - For version control for tracking changes in the code files </br>
 ✓ Jenkins - For continuous integration and continuous deployment  </br>
 ✓ Docker - For deploying containerized applications </br>
 ✓ Ansible - Configuration management tools  </br>
-✓ Selenium - For automating tests on the deployed web application </br>
 
-## Step 1: Create Infrastructure 🖥️
+## $\color{yellow}{step 1: Create Infrastructure}$
 Create two ec2 instance 
 1. Master
-2. Node
-### Master
+2. Worker 
+### Set Up Master Node
 1. ami = ubuntu
 2. instance type = t2.medium
 3. ports =  22, 8080
+
+![INSTANCE](https://github.com/kajol2699/Project-InsureMe/assets/130952932/f7320304-f0a4-4475-84ee-420e16cc6aca)
+
+
+![SG](https://github.com/kajol2699/Project-InsureMe/assets/130952932/ec2bbe1f-6464-49af-8cdd-cccd6ccca89e)
+
+![NODES](https://github.com/kajol2699/Project-InsureMe/assets/130952932/87c9d3bb-1ff7-4a4f-b521-a11855cbfd52)
+
+
    
 Take SSH and Connect to Instance
-## CI/CD Setup    🌟
+## $\color{yellow}{step 2: CI/CD Setup}$
 
 ### Install Jenkins for Automation:
 ### Install Jenkins on the EC2 instance to automate deployment: Install Java
-sudo apt update
+```` 	
+sudo apt update 
+
 sudo apt install  openjdk-11-jdk
+````
 
 
-
-
+````
 #jenkins
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \   </br>
 https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key  </br>
@@ -39,13 +91,14 @@ sudo apt-get update    </br>
 sudo apt-get install jenkins   </br>
 sudo systemctl start jenkins    </br>
 sudo systemctl enable jenkins   </br>
-
+````
 
 Access Jenkins in a web browser using the public IP of your EC2 instance.
-publicIp:8080
+$\color{pink}{publicIp:8080}$
 
+![JENKINS-HOME](https://github.com/kajol2699/Project-InsureMe/assets/130952932/eee7b43a-bdc6-44d4-b8ee-d66e101cea21)
 
-### Install Necessary Plugins in Jenkins🔌
+### Install Necessary Plugins in Jenkins:
 
 #### Goto Manage Jenkins →Plugins → Available Plugins →
 
@@ -59,24 +112,28 @@ publicIp:8080
 
 ##### Add tools in  Dashboard->Manage Jenkins-> Tools
 
+![JENKINS-TOOLS](https://github.com/kajol2699/Project-InsureMe/assets/130952932/9e92b0b3-e7db-4257-9287-7d49006d130f)
 
 #### Create Job in Jenkins : go to Dashboard->Item Name
 
+![JOB](https://github.com/kajol2699/Project-InsureMe/assets/130952932/0485ed2e-3795-477a-ac64-508ec8bef2d1)
 
 As soon as the developer pushes the updated code on the GIT master branch, the Jenkins job should be triggered using a GitHub Webhook and Jenkins job should be triggered
+In Jenkins Job ->Configuration->choose GitHub hook trigger for GITScm polling
+
+![WEBHOOK-JEN](https://github.com/kajol2699/Project-InsureMe/assets/130952932/81253cac-b3b6-4816-ac18-b044e671ee3d)
 
 To Create Webhook: go to settings of your github repository 
 In Payload URL: Add yours jenkins url
 
-In Jenkins Job ->Configuration->choose GitHub hook trigger for GITScm polling
+![WEBHOOK](https://github.com/kajol2699/Project-InsureMe/assets/130952932/8d11e27b-39bc-4443-b01c-613290897690)
 
-
-## Install  Docker🚢
-
+## $\color{yellow}{step 3: Install  Docker}$
+````
 sudo apt install docker.io -y
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
-
+````
 Add DockerHub Credentials:
 
 To securely handle DockerHub credentials in your Jenkins pipeline, follow these steps: </br>
@@ -87,6 +144,7 @@ Choose "Secret text" as the kind of credentials.  </br>
 Enter your DockerHub credentials (Username and Password) and give the credentials an ID (e.g., "docker"). </br>
 Click "OK" to save your DockerHub credentials. </br>
 
+````
 pipeline {
     
      agent any
@@ -132,11 +190,13 @@ pipeline {
 }
 
 
+````
 
 Build Pipeline:
 
+![BUILD PIPELINE](https://github.com/kajol2699/Project-InsureMe/assets/130952932/c3638768-a2e3-47c8-a691-35e92980d01d)
 
 
+Final Output:
 
-Final Output:win
-ip:port 
+![OUTPUT](https://github.com/kajol2699/Project-InsureMe/assets/130952932/237d1bd2-97df-4451-a69c-11e6c3ef6d12)
