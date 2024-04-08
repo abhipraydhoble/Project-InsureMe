@@ -82,15 +82,15 @@ sudo apt install  openjdk-11-jdk
 
 ````
 #jenkins
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \   </br>
-https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key  </br>
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \  
+https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key 
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-/etc/apt/sources.list.d/jenkins.list > /dev/null   </br>
+/etc/apt/sources.list.d/jenkins.list > /dev/null   
 sudo apt-get update    </br>
-sudo apt-get install jenkins   </br>
-sudo systemctl start jenkins    </br>
-sudo systemctl enable jenkins   </br>
+sudo apt-get install jenkins   
+sudo systemctl start jenkins   
+sudo systemctl enable jenkins   
 ````
 
 Access Jenkins in a web browser using the public IP of your EC2 instance.
