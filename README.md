@@ -144,7 +144,7 @@ Choose "Secret text" as the kind of credentials.  </br>
 Enter your DockerHub credentials (Username and Password) and give the credentials an ID (e.g., "docker"). </br>
 Click "OK" to save your DockerHub credentials. </br>
 
-````
+```groovy
 pipeline {
     
      agent any
@@ -190,7 +190,7 @@ pipeline {
 }
 
 
-````
+```
 
 Build Pipeline:
 
