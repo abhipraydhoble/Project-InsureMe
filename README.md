@@ -43,14 +43,14 @@ With DevOps Approch I used several devops tools such as  <br>
 - Whenever someone make changes to the code, Jenkins takes care of the rest, ensuring that your application is always up-to-date and running smoothly on your servers.</p>
 
 # $\color{red} \ \textbf{Steps}$
-## $\color{green}{Tech Stack}$
+## $\color{green} \textbf {Tech Stack}$
 ✓ AWS - For creating ec2 machines as servers and deploy the web application. </br>
 ✓ Git - For version control for tracking changes in the code files </br>
 ✓ Jenkins - For continuous integration and continuous deployment  </br>
 ✓ Docker - For deploying containerized applications </br>
 ✓ Ansible - Configuration management tools  </br>
 
-## $\color{yellow}{step 1: Create Infrastructure}$
+## $\color{yellow} \textbf{step 1: Create Infrastructure}$
 Create two ec2 instance 
 1. Master
 2. Worker 
@@ -69,7 +69,7 @@ Create two ec2 instance
 
    
 Take SSH and Connect to Instance
-## $\color{yellow}{step 2: CI/CD Setup}$
+## $\color{yellow} \textbf{step 2: CI/CD Setup}$
 
 ### Install Jenkins for Automation:
 ### Install Jenkins on the EC2 instance to automate deployment: Install Java
@@ -128,7 +128,7 @@ In Payload URL: Add yours jenkins url
 
 ![WEBHOOK](https://github.com/kajol2699/Project-InsureMe/assets/130952932/8d11e27b-39bc-4443-b01c-613290897690)
 
-## $\color{yellow}{step 3: Install  Docker}$
+## $\color{yellow} \textbf{step 3: Install  Docker}$
 ````
 sudo apt install docker.io -y
 sudo usermod -aG docker jenkins
@@ -197,6 +197,6 @@ Build Pipeline:
 ![BUILD PIPELINE](https://github.com/kajol2699/Project-InsureMe/assets/130952932/c3638768-a2e3-47c8-a691-35e92980d01d)
 
 
-Final Output: node ip:container port
+**Final Output: node ip:container port**
 
 ![OUTPUT](https://github.com/kajol2699/Project-InsureMe/assets/130952932/237d1bd2-97df-4451-a69c-11e6c3ef6d12)
