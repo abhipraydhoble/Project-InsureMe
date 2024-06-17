@@ -1,10 +1,10 @@
- #  $$\color{red}{Project-InsureMe}$$
+ #  $\color{red}  \textbf{Project} \ \  \textbf{InsureMe}$
  
 
 InsureMe was having trouble managing their software because it was all one big piece. </br>
 As they grew bigger, it became even harder to manage. <br>
 
-### $$\color{orange}{Requirements}$$
+### $\color{orange}{Requirements}$
 
 #### 1. Automated Deployment:</br>
 Whenever a developer makes changes to the code and pushes them to the master branch of the Git repository, </br>
@@ -27,7 +27,7 @@ With DevOps Approch I used several devops tools such as  <br>
 - AWS: Provided infrastructure for hosting and deploying the application. </br>
  Together, these tools streamlined development, testing, and deployment, ensuring efficient management of the InsureMe project. </br>
 
-### $$\color{orange}{Project Summary}$$
+### $\color{orange}{Project Summary}$
 
 - Create two EC2 instances on Amazon Web Services (AWS): one called Master and the other called Node.
 - These servers will host application and manage its deployment.
@@ -42,15 +42,15 @@ With DevOps Approch I used several devops tools such as  <br>
 - With this setup, you  can fully automated process for building, testing, and deploying your application.
 - Whenever someone make changes to the code, Jenkins takes care of the rest, ensuring that your application is always up-to-date and running smoothly on your servers.</p>
 
-# $$\color{red}{Steps}$$
-## $$\color{green}{Tech Stack}$$
+# $\color{red}{Steps}$
+## $\color{green}{Tech Stack}$
 ✓ AWS - For creating ec2 machines as servers and deploy the web application. </br>
 ✓ Git - For version control for tracking changes in the code files </br>
 ✓ Jenkins - For continuous integration and continuous deployment  </br>
 ✓ Docker - For deploying containerized applications </br>
 ✓ Ansible - Configuration management tools  </br>
 
-## $$\color{yellow}{step 1: Create Infrastructure}$$
+## $\color{yellow}{step 1: Create Infrastructure}$
 Create two ec2 instance 
 1. Master
 2. Worker 
@@ -69,7 +69,7 @@ Create two ec2 instance
 
    
 Take SSH and Connect to Instance
-## $$\color{yellow}{step 2: CI/CD Setup}$$
+## $\color{yellow}{step 2: CI/CD Setup}$
 
 ### Install Jenkins for Automation:
 ### Install Jenkins on the EC2 instance to automate deployment: Install Java
@@ -94,7 +94,7 @@ sudo systemctl enable jenkins
 ````
 
 Access Jenkins in a web browser using the public IP of your EC2 instance.
-$$\color{pink}{publicIp:8080}$$
+$\color{pink}{publicIp:8080}$
 
 ![JENKINS-HOME](https://github.com/kajol2699/Project-InsureMe/assets/130952932/eee7b43a-bdc6-44d4-b8ee-d66e101cea21)
 
@@ -128,7 +128,7 @@ In Payload URL: Add yours jenkins url
 
 ![WEBHOOK](https://github.com/kajol2699/Project-InsureMe/assets/130952932/8d11e27b-39bc-4443-b01c-613290897690)
 
-## $$\color{yellow}{step 3: Install  Docker}$$
+## $\color{yellow}{step 3: Install  Docker}$
 ````
 sudo apt install docker.io -y
 sudo usermod -aG docker jenkins
@@ -173,7 +173,7 @@ pipeline {
     	agent any
           steps {
        	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            	sh "docker login -u $${env.dockerHubUser} -p $${env.dockerHubPassword}"
+            	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                 sh 'docker push kaju912/insurance:latest'
         }
       }
