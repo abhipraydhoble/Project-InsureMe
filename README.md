@@ -1,10 +1,10 @@
- #  $\color{red}  \textbf{Project} \ \  \textbf{InsureMe}$
+ #  $$\color{red}  \textbf{Project} \ \  \textbf{InsureMe}$$
  
 
 InsureMe was having trouble managing their software because it was all one big piece. </br>
 As they grew bigger, it became even harder to manage. <br>
 
-### $\color{orange}{Requirements}$
+### $\color{orange} \textbf{Requirements}$
 
 #### 1. Automated Deployment:</br>
 Whenever a developer makes changes to the code and pushes them to the master branch of the Git repository, </br>
@@ -27,7 +27,7 @@ With DevOps Approch I used several devops tools such as  <br>
 - AWS: Provided infrastructure for hosting and deploying the application. </br>
  Together, these tools streamlined development, testing, and deployment, ensuring efficient management of the InsureMe project. </br>
 
-### $\color{orange}{Project Summary}$
+### $\color{orange} \textbf{Project} \\ \textbf{Summary}$
 
 - Create two EC2 instances on Amazon Web Services (AWS): one called Master and the other called Node.
 - These servers will host application and manage its deployment.
@@ -42,7 +42,7 @@ With DevOps Approch I used several devops tools such as  <br>
 - With this setup, you  can fully automated process for building, testing, and deploying your application.
 - Whenever someone make changes to the code, Jenkins takes care of the rest, ensuring that your application is always up-to-date and running smoothly on your servers.</p>
 
-# $\color{red}{Steps}$
+# $\color{red} \ \textbf{Steps}$
 ## $\color{green}{Tech Stack}$
 ✓ AWS - For creating ec2 machines as servers and deploy the web application. </br>
 ✓ Git - For version control for tracking changes in the code files </br>
