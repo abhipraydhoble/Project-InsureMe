@@ -50,7 +50,7 @@ With DevOps Approch I used several devops tools such as  <br>
 ✓ Docker - For deploying containerized applications </br>
 ✓ Ansible - Configuration management tools  </br>
 
-## $\color{yellow} \textbf{step 1: Create Infrastructure}$
+## $\color{bluew} \textbf{step 1: Create Infrastructure}$
 Create two ec2 instance 
 1. Master
 2. Worker 
@@ -69,7 +69,7 @@ Create two ec2 instance
 
    
 Take SSH and Connect to Instance
-## $\color{yellow} \textbf{step 2: CI/CD Setup}$
+## $\color{bluew} \textbf{step 2: CI/CD Setup}$
 
 ### Install Jenkins for Automation:
 ### Install Jenkins on the EC2 instance to automate deployment: Install Java
@@ -128,7 +128,7 @@ In Payload URL: Add yours jenkins url
 
 ![WEBHOOK](https://github.com/kajol2699/Project-InsureMe/assets/130952932/8d11e27b-39bc-4443-b01c-613290897690)
 
-## $\color{yellow} \textbf{step 3: Install  Docker}$
+## $\color{bluew} \textbf{step 3: Install  Docker}$
 ````
 sudo apt install docker.io -y
 sudo usermod -aG docker jenkins
