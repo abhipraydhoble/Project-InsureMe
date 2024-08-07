@@ -151,7 +151,7 @@ pipeline {
     stages {
         stage('Code-Checkout') {
             steps {
-              checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/kajol2699/Project-InsureMe.git']])
+              checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/abhipraydhoble/Project-InsureMe.git']])
             }
         }
         
@@ -164,7 +164,7 @@ pipeline {
         stage('Containerize the application'){
             steps { 
                echo 'Creating Docker image'
-               sh "docker build -t kaju912/insurance:latest ."
+               sh "docker build -t abhipraydh96/insure:v1 ."
             }
         }
         
@@ -173,7 +173,7 @@ pipeline {
           steps {
        	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh 'docker push kaju912/insurance:latest'
+                sh 'docker push abhipraydh96/insure:v1'
         }
       }
     }
