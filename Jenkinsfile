@@ -18,7 +18,7 @@ pipeline {
         stage('Containerize the application'){
             steps { 
                echo 'Creating Docker image'
-               sh "docker build -t kaju912/insurance:latest ."
+               sh "docker build -t abhipraydh96/insurance:latest ."
             }
         }
         
@@ -27,7 +27,7 @@ pipeline {
           steps {
        	withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh 'docker push kaju912/insurance:latest'
+                sh 'docker push abhipraydh96/insurance:latest'
         }
       }
     }
