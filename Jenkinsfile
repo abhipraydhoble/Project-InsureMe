@@ -35,7 +35,7 @@ pipeline {
       
      stage('Code-Deploy') {
         steps {
-           ansiblePlaybook credentialsId: 'ansible', installation: 'ansible', playbook: 'ansible-playbook.yml', vaultTmpPath: ''       
+           ansiblePlaybook credentialsId: 'ansible', installation: 'ansible', playbook: 'playbook.yml', vaultTmpPath: ''       
         }
       }
    }
