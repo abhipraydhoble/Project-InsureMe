@@ -24,6 +24,11 @@ pipeline {
             steps{
                 sh ' docker run -itd -p 8089:8081 testapp'
             }
+
+
+
+
+            
         }
     }
 }
