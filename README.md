@@ -74,22 +74,18 @@ Take SSH and Connect to Instance
 ### Install Jenkins for Automation:
 ### Install Jenkins on the EC2 instance to automate deployment: Install Java
 ```` 	
-sudo apt update 
+sudo apt update -y
+sudo apt install fontconfig openjdk-17-jre -y
 
-sudo apt install  openjdk-11-jdk
-````
-
-
-````
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \  
-https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key 
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-/etc/apt/sources.list.d/jenkins.list > /dev/null   
-sudo apt-get update 
-sudo apt-get install jenkins   
-sudo systemctl start jenkins   
-sudo systemctl enable jenkins   
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update -y
+sudo apt-get install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
 ````
 
 Access Jenkins in a web browser using the public IP of your EC2 instance.
