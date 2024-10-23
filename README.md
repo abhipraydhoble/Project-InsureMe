@@ -104,6 +104,7 @@ $\color{pink}{publicIp:8080}$
 4.Docker Pipeline  </br>
 5.Docker API  </br>
 6.docker-build-step  </br>
+7. stage view
 
 ##### Add tools in  Dashboard->Manage Jenkins-> Tools
 
