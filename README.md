@@ -128,6 +128,7 @@ In Payload URL: Add yours jenkins url
 sudo apt install docker.io -y
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
+sudo chmod 777 /var/run/docker.sock
 ````
 Add DockerHub Credentials:
 
