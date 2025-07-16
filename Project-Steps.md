@@ -12,7 +12,13 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update
 sudo apt-get install jenkins -y
 ````
-**note:** -> first install java then jenkins
+## install docker
+````
+sudo apt install docker.io -y
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+sudo chmod 777 /var/run/docker.sock
+````
 
 ## install below plugins
 ````
