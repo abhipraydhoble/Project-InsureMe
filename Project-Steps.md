@@ -20,7 +20,10 @@ sudo usermod -aG docker jenkins
 newgrp docker
 sudo chmod 777 /var/run/docker.sock
 ````
-
+## install maven
+````
+sudo apt install maven -y
+````
 ## install below plugins
 ````
 stage view
