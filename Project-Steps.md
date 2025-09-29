@@ -46,29 +46,24 @@ docker
 ```pipeline
 pipeline {
     agent any
-
-    tools {
-        maven 'maven'
-        
-    }
     
     stages{
-        stage('code-pull'){
+        stage('Code-Pull'){
             steps{
                 git branch: 'main', url: 'https://github.com/abhipraydhoble/Project-InsureMe.git'
             }
         }
-
-        stage('code-build'){
+        
+        stage('Code-Build'){
             steps{
                 sh 'mvn clean package'
             }
         }
-
-        stage('code-deploy'){
+        
+        stage('Code-Deploy'){
             steps{
-                sh 'docker build -t devops-b53 .'
-                sh 'docker run -itd --name app-1 -p 8089:8081 devops-b53'
+                sh 'docker build -t ins .'
+                sh 'docker run -itd --name c1 -p 8089:8081 ins'
             }
         }
     }
