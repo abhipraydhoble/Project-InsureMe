@@ -162,3 +162,53 @@ pipeline {
     }
 }
 ```
+
+# without dockerhub
+````
+pipeline {
+    agent any 
+
+    tools {
+        maven 'maven-3'
+    }
+
+   environment {
+     S3_BUCKET = "project-insure-me-build-artifacts-store"
+     REGION = "ap-southeast-1"
+     warFile = "target/Insurance-0.0.1-SNAPSHOT.jar"
+   }
+
+
+stages{
+    stage('code-pull'){
+        steps{
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/abhipraydhoble/Project-InsureMe.git']])
+        }
+    }
+
+    stage('code-build'){
+        steps{
+            sh 'mvn clean package'
+        }
+    }
+    
+    stage('push-to-s3'){
+        steps{
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+               sh 'aws s3 cp ${warFile} s3://${S3_BUCKET}/Backup/ --region ${REGION}'
+             }
+        }
+    }
+     stage('docker-image'){
+        steps{
+            sh 'docker build -t insure-me .'
+        }
+    }
+    stage('code-deploy'){
+        steps{
+            sh 'docker run -itd --name insure-me -p 8089:8081 insure-me '
+        }
+    }
+ }
+}
+````
