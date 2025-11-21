@@ -1,9 +1,51 @@
-# Project: Insure-Me
+#  $$\color{red}  \textbf{Project} \ \  \textbf{InsureMe}$$
+ 
 
+InsureMe was having trouble managing their software because it was all one big piece. </br>
+As they grew bigger, it became even harder to manage. <br>
 
-## Launch ubuntu instance(t2.medium)
+### $\color{orange} \textbf{Requirements}$
 
-## install jenkins
+#### 1. Automated Deployment:</br>
+Whenever a developer makes changes to the code and pushes them to the main branch of the Git repository, </br>
+Jenkins should automatically start a deployment process.
+</br>
+#### 2. CI/CD Pipeline: </br>
+Jenkins should: </br>
+
+* Check out the latest code from the main branch.
+* Compile and test the code to ensure it works correctly
+* Package the application into a container using Docker.
+* Deploy the containerized application
+
+With DevOps Approch I used several devops tools such as  <br>
+
+- Git: Managed code changes with version control. </br>
+- Jenkins: Automated integration, testing, and deployment processes. </br>
+- Docker: Containerized applications for consistency and scalability. </br>
+- AWS: Provided infrastructure for hosting and deploying the application. </br>
+ Together, these tools streamlined development, testing, and deployment, ensuring efficient management of the InsureMe project. </br>
+
+### $\color{orange} \textbf{Project} \\ \textbf{Summary}$
+
+- Create  EC2 instance on Amazon Web Services (AWS)
+- These servers will host application and manage its deployment.
+- Install Jenkins  server to automate the process of building, testing, and deploying application.
+- Set up Jenkins to watch your code repository on GitHub.
+- Whenever someone makes changes to the code and pushes them to GitHub, Jenkins automatically kicks off a process to update and deploy application.
+- Used Docker to package application and its dependencies into a container, making it easy to deploy and run anywhere.
+- After that write a pipeline in Jenkins to build, test, and deploy your application automatically.
+- This pipeline runs every time someone makes changes to the code, ensuring that the latest version of your application is always available.
+- Whenever someone pushes changes to the code, Jenkins pulls the latest code, builds the application, creates a Docker image, and pushes it to DockerHub (a service for storing Docker images).
+- Then, it deploys the updated application 
+- With this setup, you  can fully automated process for building, testing, and deploying your application.
+- Whenever someone make changes to the code, Jenkins takes care of the rest, ensuring that your application is always up-to-date and running smoothly on your servers.</p>
+
+## Project Steps
+
+### Launch ubuntu instance(t2.medium)
+
+### install jenkins
 ````
 sudo apt update
 sudo apt install fontconfig openjdk-21-jre  -y
@@ -15,7 +57,7 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update
 sudo apt-get install jenkins -y
 ````
-## install docker
+### install docker
 ````
 sudo apt install docker.io -y
 sudo systemctl start docker
@@ -24,11 +66,11 @@ sudo usermod -aG docker ubuntu
 newgrp docker
 sudo chmod 777 /var/run/docker.sock
 ````
-## install maven
+### install maven
 ````
 sudo apt install maven -y
 ````
-## install below plugins
+### install below plugins
 ````
 stage view
 ````
@@ -45,16 +87,16 @@ s3 publisher
 docker
 ````
 
-## configure tools in Manage Jenkins-> Tools
+### configure tools in Manage Jenkins-> Tools
 <img width="1920" height="836" alt="image" src="https://github.com/user-attachments/assets/15c89fa2-5e98-432e-9687-9b8ead0edafa" />
 <img width="1917" height="826" alt="image" src="https://github.com/user-attachments/assets/21c55a7c-0fe7-49f6-bf26-e7c547692e1c" />
 
 
-## add credentials 
+### add credentials 
 <img width="1892" height="498" alt="image" src="https://github.com/user-attachments/assets/9d473b5b-1945-4b53-a649-54aab597e9ea" />
 
 
-## Click on Dashboard and create new project and select project type as *pipeline* project
+### Click on Dashboard and create new project and select project type as *pipeline* project
 
 
 
