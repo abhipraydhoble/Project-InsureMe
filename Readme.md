@@ -46,10 +46,13 @@ docker
 <img width="1920" height="836" alt="image" src="https://github.com/user-attachments/assets/15c89fa2-5e98-432e-9687-9b8ead0edafa" />
 <img width="1917" height="826" alt="image" src="https://github.com/user-attachments/assets/21c55a7c-0fe7-49f6-bf26-e7c547692e1c" />
 
+
 ## add credentials 
 <img width="1892" height="498" alt="image" src="https://github.com/user-attachments/assets/9d473b5b-1945-4b53-a649-54aab597e9ea" />
 
+
 ## Click on Dashboard and create new project and select project type as *pipeline* project
+
 
 
 ### setup webhook
@@ -106,7 +109,7 @@ pipeline {
             }
         } 
         
-        stage('Deploy'){
+        stage('code-deploy'){
             steps{
                 sh 'docker run -itd --name insure-me -p 8089:8081 abhipraydh96/insure'
             }
