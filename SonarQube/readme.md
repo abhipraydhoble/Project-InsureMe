@@ -26,17 +26,7 @@ sudo chmod 777 /var/run/docker.sock
 ````
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 ````
-## Step3: Connect to Jenkins 
-
-## Step4: Connect to SonarQube
-   - Admin->my account->security->generate token
-![image](https://github.com/user-attachments/assets/26cb309d-aa3c-4a74-873f-9e87b2fcce00)
-
-Step5: In Jenkins
-     - Manage Jenkins: Credentials
-       - Sonar-Token
-       - Git-Cred
-       - Docker-Cred
+## Connect to Jenkins 
 ## Step6: Install Required Plugins:
    **Install below plugins**
 
@@ -52,8 +42,7 @@ docker
 ````
 stage view
 ````
-
-## Step7: Install  Tools: Manage Jenkins->Tools
+## Install  Tools: Manage Jenkins->Tools
    - add SonarQube Scanner: "sonar-scanner"
    - docker: "docker"
 
@@ -67,7 +56,7 @@ stage view
 ![image](https://github.com/user-attachments/assets/289c2e2a-df33-476b-a195-d584db3ef03e)
 
 
-
+## Connect to SonarQube
 ## Log in to Sonarqube and generate token
  - username: admin
  - password: admin
@@ -84,13 +73,23 @@ stage view
 
 <img width="1907" height="846" alt="image" src="https://github.com/user-attachments/assets/bcd447f5-4a49-478d-99d6-1379202f4334" />
 
+  - Admin->my account->security->generate token
+![image](https://github.com/user-attachments/assets/26cb309d-aa3c-4a74-873f-9e87b2fcce00)
+
+Step5: In Jenkins
+     - Manage Jenkins: Credentials
+       - Sonar-Token
+       - Git-Cred
+       - Docker-Cred
+
+
 ## Configure Sonar Server: Manage Jenkins->System
    - name: "sonar-server"
    - url:
    - token:
 ![image](https://github.com/user-attachments/assets/c5d05628-1502-4a92-b722-7ad3eed5d587)
 
-## SRestart Jenkins
+## Restart Jenkins
 
 ##  Create Pipeline
 ```groovy
@@ -133,7 +132,7 @@ pipeline {
             }
         }
 
-        stage("code-test-analysis-quality gate") {
+        stage("code-test-quality gate") {
             steps {
                 script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
