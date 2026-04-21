@@ -111,7 +111,11 @@ docker
 
 
 ### add credentials 
+
 <img width="1892" height="498" alt="image" src="https://github.com/user-attachments/assets/9d473b5b-1945-4b53-a649-54aab597e9ea" />
+<img width="674" height="610" alt="image" src="https://github.com/user-attachments/assets/39c52b8e-659c-4405-b988-9abae67533b9" />
+<img width="666" height="585" alt="image" src="https://github.com/user-attachments/assets/6273c9a3-7eb2-413b-b569-72c258cca273" />
+<img width="690" height="778" alt="image" src="https://github.com/user-attachments/assets/9396a0d1-e592-437c-9d8b-63f75afdde07" />
 
 
 ### Click on Dashboard and create new project and select project type as *pipeline* project
