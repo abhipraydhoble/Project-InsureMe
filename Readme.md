@@ -93,6 +93,9 @@ stage view
 maven integration
 ````
 ````
+sonarqube scanner
+````
+````
 aws credentials
 ````
 ````
