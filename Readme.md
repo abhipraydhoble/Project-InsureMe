@@ -121,7 +121,7 @@ pipeline {
     }
     environment {
 
-     S3_BUCKET = "cdec-b57-jenkins-s3-int"
+     S3_BUCKET = "project-insure-me-build-artifacts-store"
      REGION = "ap-southeast-1"
      warFile = "target/Insurance-0.0.1-SNAPSHOT.jar"
      }
