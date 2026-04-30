@@ -28,9 +28,10 @@ pipeline {
         }
     }
 }
-    
 
 ```
+---
+
 ### new pipeline
 ````
 pipeline {
