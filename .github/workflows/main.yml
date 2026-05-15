@@ -7,23 +7,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-      - name: Pull Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-
-      - name: Build Project
+      - name: Build Maven
         run: mvn clean package
 
       - name: Build Docker Image
         run: docker build -t demo .
 
       - name: Run Container
-        run: docker run -d -p 8089:8081 demo
+        run: |
+          docker rm -f c1 || true
+          docker run -d --name c1 -p 8089:8081 demo
