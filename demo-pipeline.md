@@ -29,22 +29,22 @@ pipeline {
 ```
 ---
 
-### new pipeline
+### Push artifacts to s3 bucket
 ````
 pipeline {
     agent any 
     tools{
-        maven 'maven'
+        maven 'maven-3'
     }
     environment {
-     S3_BUCKET = "project-insure-me-build-artifacts-store-oncdecb36"
+     S3_BUCKET = "project-insure-me-artifact-store"
      REGION = "ap-southeast-1"
      warFile = "target/Insurance-0.0.1-SNAPSHOT.jar"
      }
     stages {
         stage('code-pull'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/abhipraydhoble/Project-InsureMe.git']])
+               git branch: 'main', url: 'https://github.com/abhipraydhoble/Project-InsureMe.git'
             }
         }
         stage('code-build'){
@@ -53,6 +53,7 @@ pipeline {
             }
         }
         
+    
 
         stage('code-push'){
             steps{
@@ -61,29 +62,18 @@ pipeline {
                  }
             }
         }
-       stage('docker-image'){
+       stage('code-deploy'){
             steps{
-                sh 'docker build -t abhipraydh96/insureb67 .'
+                sh 'docker build -t insureme .'
+                sh 'docker run -itd --name insure-me -p 8089:8081 insureme'
                 
             }
         }
         
-        stage('image-push'){
-            steps {
-       	       withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh 'docker push abhipraydh96/insureb67'
-               }
-            }
-        } 
-        
-        stage('code-deploy'){
-            steps{
-                sh 'docker run -itd --name insure-me -p 8089:8081 abhipraydh96/insureb67'
-            }
-        }
     }
 }
+
+
 ````
 
 
