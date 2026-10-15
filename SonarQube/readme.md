@@ -31,21 +31,18 @@ docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 ## Step6: Install Required Plugins:
    **Install below plugins**
 
-````
-maven integration
-````
+
 ````
 SonarQube Scanner
 ````
-````
-docker
+
 ````
 ````
 stage view
 ````
 ## Install  Tools: Manage Jenkins->Tools
    - add SonarQube Scanner: "sonar-scanner"
-   - docker: "docker"
+
 
 ### **Configure SonarQube-Scanner and Docker in Global Tool Configuration**
 
@@ -80,8 +77,7 @@ stage view
 Step5: In Jenkins
      - Manage Jenkins: Credentials
        - Sonar-Token
-       - Git-Cred
-       - Docker-Cred
+       
 
 
 ## Configure Sonar Server: Manage Jenkins->System
@@ -97,9 +93,6 @@ Step5: In Jenkins
 pipeline {
     agent any 
 
-    tools {
-        maven 'maven'
-    }
 
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
