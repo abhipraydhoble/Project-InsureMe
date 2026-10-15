@@ -12,10 +12,11 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update
 sudo apt-get install jenkins -y
 ````
-**Docker**
+**Docker & maven**
 ````
 
 sudo apt-get update
+sudo apt install maven -y
 sudo apt-get install docker.io -y
 sudo systemctl start docker
 sudo usermod -aG docker ubuntu
@@ -36,7 +37,7 @@ docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 SonarQube Scanner
 ````
 
-````
+
 ````
 stage view
 ````
@@ -87,6 +88,7 @@ Step5: In Jenkins
 ![image](https://github.com/user-attachments/assets/c5d05628-1502-4a92-b722-7ad3eed5d587)
 
 ## Restart Jenkins
+---
 
 ##  Create Pipeline
 ```groovy
